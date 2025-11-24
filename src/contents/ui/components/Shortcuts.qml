@@ -58,6 +58,17 @@ Item {
         }
     }
 
+    signal toggleZoneSpanning()
+
+    ShortcutHandler {
+        name: "KZones: Toggle zone spanning"
+        text: "KZones: Toggle zone spanning"
+        sequence: "Ctrl+Alt+V"
+        onActivated: {
+            toggleZoneSpanning();
+        }
+    }
+
     signal switchToNextWindowInCurrentZone()
 
     ShortcutHandler {

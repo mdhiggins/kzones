@@ -31,8 +31,8 @@
             <default>0</default>
         </entry>
 
-        <entry name="enableEdgeSnapping" type="Bool">
-            <default>false</default>
+        <entry name="enableEdgeMode" type="Int">
+            <default>0</default>
         </entry>
 
         <entry name="edgeSnappingTriggerDistance" type="Int">
@@ -143,6 +143,10 @@
 
         <entry name="enableDebugOverlay" type="Bool">
             <default>false</default>
+        </entry>
+
+        <entry name="zoneSpanningDistance" type="Int">
+            <default>0</default>
         </entry>
 
     </group>

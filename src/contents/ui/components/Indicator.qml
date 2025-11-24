@@ -4,9 +4,10 @@ import "../components" as Components
 
 Rectangle {
     id: indicator
-    property int activeZone: 0
+    property var activeZone: []
+    property var highlightedZone: []
     property bool hovering: false
-    property var zones: []
+    property var indicatorZones: []
     width: parent.width
     height: parent.height
     color: "transparent"
@@ -14,7 +15,7 @@ Rectangle {
 
     Repeater {
         id: indicators
-        model: zones
+        model: indicatorZones
 
         Item {
             id: zone
@@ -28,8 +29,10 @@ Rectangle {
                 anchors.fill: parent
                 anchors.margins: padding
                 color: {
-                    if (activeZone == index) {
+                    if (activeZone.includes(index)) {
                         return modelData.color ? colorHelper.tintWithAlpha(colorHelper.buttonColor, modelData.color, 0.6) : colorHelper.accentColor
+                    } else if (indicator.highlightedZone.includes(index) && indicator.highlightedZone.includes(activeIndex)) {
+                        return modelData.color ? colorHelper.tintWithAlpha(colorHelper.buttonColor, modelData.color, 0.2) : Qt.rgba(colorHelper.accentColor.r, colorHelper.accentColor.g, colorHelper.accentColor.b, 0.2)
                     } else {
                         return modelData.color ? colorHelper.tintWithAlpha(colorHelper.buttonColor, modelData.color, 0.2) : colorHelper.buttonColor
                     }

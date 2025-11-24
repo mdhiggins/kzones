@@ -203,21 +203,15 @@
         </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="kcfg_enableEdgeSnapping">
+        <widget class="QGroupBox" name="kcfg_enableEdge">
          <property name="title">
-          <string>Enable Edge Snapping</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
+          <string>Edge Snapping / Bumping</string>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout_13">
           <item>
            <widget class="QLabel" name="label_edgeSnappingExplanation">
             <property name="text">
-             <string>Edge Snapping allows you to snap windows to zones by dragging them to the edge of the screen. Make sure to disable the default edge snapping functionality before enabling this.</string>
+             <string>Edge Snapping allows you to snap windows to zones by dragging them to the edge of the screen. Make sure to disable the default edge snapping functionality before enabling this. Edge Bumping works similarly but instead presents the whole overlay when you bump a window into the edge.</string>
             </property>
             <property name="wordWrap">
              <bool>true</bool>
@@ -225,7 +219,49 @@
            </widget>
           </item>
           <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_edgeMode">
+            <item>
+             <widget class="QLabel" name="label_edgeMode">
+              <property name="text">
+               <string>Mode</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QComboBox" name="kcfg_enableEdgeMode">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <item>
+               <property name="text">
+                <string>Disabled</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Edge Snapping</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>Edge Bumping</string>
+               </property>
+              </item>
+              <property name="currentIndex">
+               <number>0</number>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+          <item>
            <layout class="QFormLayout" name="formLayout_edgeSnapping">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
             <item row="0" column="0">
              <widget class="QLabel" name="label_edgeSnappingTriggerDistance">
               <property name="text">
@@ -235,12 +271,6 @@
             </item>
             <item row="0" column="1">
              <widget class="QComboBox" name="kcfg_edgeSnappingTriggerDistance">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
               <item>
                <property name="text">
                 <string>Close</string>
@@ -316,6 +346,41 @@
             </property>
            </widget>
           </item>
+          <item row="1" column="0">
+           <widget class="QLabel" name="label_zoneSpanningDistance">
+            <property name="text">
+             <string>Adjacent zone spanning distance</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QSpinBox" name="kcfg_zoneSpanningDistance">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="toolTip">
+             <string>When >0, zones will be combined if the window is dropped in this adjacent spanning distance. Forces zone highlighting anywhere in the zone.</string>
+            </property>
+            <property name="suffix">
+             <string> px</string>
+            </property>
+            <property name="minimum">
+             <number>0</number>
+            </property>
+            <property name="maximum">
+             <number>400</number>
+            </property>
+            <property name="singleStep">
+             <number>10</number>
+            </property>
+            <property name="value">
+             <number>0</number>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -333,7 +398,7 @@
         </spacer>
        </item>
       </layout>
-      <zorder>kcfg_enableEdgeSnapping</zorder>
+      <zorder>kcfg_enableEdge</zorder>
       <zorder>verticalSpacer_general</zorder>
       <zorder>groupBox_snappingBehaviour</zorder>
       <zorder>kcfg_enableZoneSelector</zorder>

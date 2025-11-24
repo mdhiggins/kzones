@@ -8,7 +8,7 @@ Item {
 
     property var config
     property int currentLayout
-    property int highlightedZone
+    property var highlightedZone: []
 
     property bool expanded: false
     property bool near: false
@@ -60,8 +60,9 @@ Item {
                 model: config.layouts
 
                 Components.Indicator {
-                    zones: modelData.zones
-                    activeZone: (currentLayout == index) ? highlightedZone : -1
+                    indicatorZones: modelData.zones
+                    activeZone: (currentLayout == index) ? selector.highlightedZone : []
+                    highlightedZone: (currentLayout == index) ? selector.highlightedZone: []
                     width: 160 - 30
                     height: 100 - 30
                     hovering: (currentLayout == index)
